@@ -1,0 +1,146 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Layout */
+.container {
+    display: flex;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background-color: white;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    transition: width 0.3s;
+}
+
+/* Sidebar Colapsado */
+.sidebar.collapsed {
+    width: 80px;
+}
+
+/* Logo */
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 30px;
+    height: 30px;
+}
+
+.logo .logo-text {
+    margin-left: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #57429D;
+}
+
+.sidebar.collapsed .logo-text {
+    display: none;
+}
+
+/* Menu */
+.menu {
+    list-style: none;
+    padding-top: 20px;
+}
+
+.menu li {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    color: #555;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.menu li:hover {
+    background: #e5e5e5;
+    border-radius: 5px;
+}
+
+.menu i {
+    font-size: 18px;
+    width: 30px;
+    text-align: center;
+    color: #555;
+}
+
+.menu span {
+    margin-left: 10px;
+    font-size: 16px;
+}
+
+.sidebar.collapsed .menu span {
+    display: none;
+}
+
+/* Item ativo */
+.menu .active {
+    background: #57429D;
+    color: white;
+    border-radius: 5px;
+}
+
+.menu .active i {
+    color: white;
+}
+
+/* Usuário */
+.user {
+    display: flex;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 20px;
+}
+
+.user img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.user-info {
+    margin-left: 10px;
+}
+
+.user-info .name {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.user-info .role {
+    font-size: 14px;
+    color: gray;
+}
+
+.sidebar.collapsed .user-info {
+    display: none;
+}
+
+/* Conteúdo */
+.content {
+    flex: 1;
+    padding: 20px;
+}
+
+.toggle-btn {
+    padding: 10px;
+    background: #57429D;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
