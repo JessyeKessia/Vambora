@@ -1,0 +1,55 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<div class="sidebar" [class.collapsed]="isCollapsed">
+    <div class="top">
+        <button (click)="toggleSidebar()" class="toggle-btn">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="logo">
+            <img src="logo.png" alt="Logo">
+            <span class="logo-text" *ngIf="!isCollapsed">VamBora <small class="pequenoCinza">v.01</small></span>
+        </div>
+    </div>
+
+    <!-- Menu -->
+    <ul class="menu">
+        <li (click)="selecionarItem(0)" [ngClass]="{'selecionado': itemSelecionado === 0}">
+            <mat-icon>home</mat-icon>
+            <i class="fas fa-home"></i> <span *ngIf="!isCollapsed">Home</span>
+            <mat-icon class="Direita">chevron_right</mat-icon>
+        </li>
+        <li (click)="selecionarItem(1)" [ngClass]="{'selecionado': itemSelecionado === 1}">
+            <mat-icon>luggage</mat-icon>
+            <i class="fas fa-suitcase"></i> <span *ngIf="!isCollapsed">Minhas viagens</span>
+            <mat-icon class="Direita">chevron_right</mat-icon>
+        </li>
+        <li (click)="selecionarItem(2)" [ngClass]="{'selecionado': itemSelecionado === 2}">
+            <mat-icon>directions_car</mat-icon>
+            <i class="fas fa-car"></i> <span *ngIf="!isCollapsed">Planejar viagem</span>
+            <mat-icon class="Direita">chevron_right</mat-icon>
+        </li>
+        <li (click)="selecionarItem(3)" [ngClass]="{'selecionado': itemSelecionado === 3}">
+            <mat-icon>emoji_transportation</mat-icon>
+            <i class="fas fa-list"></i> <span *ngIf="!isCollapsed">Listar viagens</span>
+            <mat-icon class="Direita">chevron_right</mat-icon>
+        </li>
+        <li (click)="selecionarItem(4)" [ngClass]="{'selecionado': itemSelecionado === 4}">
+            <mat-icon>help</mat-icon>
+            <i class="fas fa-question-circle"></i> <span *ngIf="!isCollapsed">Help</span>
+            <mat-icon class="Direita">chevron_right</mat-icon>
+        </li>
+    </ul>
+
+    
+
+    <!-- Usuário -->
+    <div class="user">
+        <img src="motorista.png" alt="Usuário">
+        <div class="user-info" *ngIf="!isCollapsed">
+            <span class="name">Evano</span>
+            <br>
+            <span class="role">Motorista</span>
+        </div>
+        <mat-icon class="role">keyboard_arrow_down</mat-icon>
+    </div>
+</div>
