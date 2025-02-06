@@ -1,0 +1,34 @@
+:host {
+    display: block;
+    padding-left: 230px;
+    padding-top: 50px;
+    width: calc(100% - 270px);
+    box-sizing: border-box;
+}
+
+.page-content {
+    width: 800px;
+    height: 500px;
+    background-color: white; 
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+}
+
+.page-content h2 {
+    color: #57429D; 
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.page-content .Texto {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.page-content .Texto p {
+    margin-bottom: 10px;
+}

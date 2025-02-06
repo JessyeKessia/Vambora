@@ -1,28 +1,37 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router'; 
+import { RouterModule, Routes } from '@angular/router'; 
 import { AppComponent } from './app.component';
-import { SidebarComponent } from './sidebar/sidebar.component'; 
 import { TelaPrincipalComponent } from './tela-principal/tela-principal.component';
 import { TelaCadastroComponent } from './tela-cadastro/tela-cadastro.component';
 import { TelaLoginComponent } from './tela-login/tela-login.component';
-import { MatIcon } from '@angular/material/icon';
+import { PlanejarViagemComponent } from './planejar-viagem/planejar-viagem.component';
+import { MinhasViagensComponent } from './minhas-viagens/minhas-viagens.component';
+import { MatIconModule } from '@angular/material/icon'; 
+
+const routes: Routes = [
+  { path: 'tela-principal', component: TelaPrincipalComponent },
+  { path: 'tela-cadastro', component: TelaCadastroComponent },
+  { path: 'tela-login', component: TelaLoginComponent },
+  { path: 'planejar-viagem', component: PlanejarViagemComponent},
+  { path: 'minhas-viagens', component: MinhasViagensComponent},
+  { path: '', redirectTo: 'tela-principal', pathMatch: 'full' }, 
+  { path: '**', redirectTo: 'tela-principal' } 
+];
 
 @NgModule({
   declarations: [
     AppComponent,
-    SidebarComponent 
+    TelaPrincipalComponent, 
+    TelaCadastroComponent,
+    TelaLoginComponent,
+    PlanejarViagemComponent,
+    MinhasViagensComponent
   ],
   imports: [
     BrowserModule,
-    MatIcon, 
-    RouterModule.forRoot([ 
-    {path: 'Tela-Login', component: TelaLoginComponent},
-    {path: 'Tela-Cadastro', component: TelaCadastroComponent},
-    {path: 'Tela-Principal', component: TelaPrincipalComponent},
-    {path: 'Sidebar', component: SidebarComponent},
-    ])
-    
+    MatIconModule, 
+    RouterModule.forRoot(routes) 
   ],
   providers: [],
   bootstrap: [AppComponent]

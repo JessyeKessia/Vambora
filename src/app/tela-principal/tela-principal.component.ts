@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-tela-principal',
-  imports: [],
   templateUrl: './tela-principal.component.html',
-  styleUrl: './tela-principal.component.css'
+  styleUrl: './tela-principal.component.css',
+  standalone: false,
 })
 export class TelaPrincipalComponent {
 

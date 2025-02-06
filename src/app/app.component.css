@@ -1,4 +1,26 @@
-/* Reset */
+.container {
+  display: flex;
+  height: 100vh; 
+}
+
+.sidebar {
+  width: 250px; 
+  background-color: #f8f9fa; 
+  height: 100vh; 
+  position: fixed;
+  left: 0;
+  top: 0;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.content {
+  margin-left: 250px;
+  flex-grow: 1;
+  padding: 20px;
+}
+
+
+
 * {
     margin: 0;
     padding: 0;
@@ -6,14 +28,9 @@
     font-family: Arial, sans-serif;
 }
 
-/* Layout */
-.container {
-    display: flex;
-}
 
-/* Sidebar */
 .sidebar {
-    width: 250px;
+    width: 270px;
     height: 100vh;
     background-color: white;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
@@ -22,36 +39,55 @@
     justify-content: space-between;
     padding: 20px;
     transition: width 0.3s;
+    overflow: hidden;
 }
 
-/* Sidebar Colapsado */
 .sidebar.collapsed {
     width: 80px;
 }
 
-/* Logo */
+
+.top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.toggle-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+
 .logo {
     display: flex;
     align-items: center;
+    justify-content: space-between; 
+    padding-bottom: 20px;
+    padding-top: 20px;
 }
 
 .logo img {
-    width: 30px;
-    height: 30px;
+    width: 43px;
+    height: auto;
 }
 
 .logo .logo-text {
     margin-left: 10px;
-    font-size: 18px;
+    font-size: 30px;
     font-weight: bold;
     color: #57429D;
+    padding-left: 10px;
+}
+.logo .pequenoCinza{
+    font-size: 15px;
+    color: gray;
 }
 
-.sidebar.collapsed .logo-text {
-    display: none;
-}
 
-/* Menu */
 .menu {
     list-style: none;
     padding-top: 20px;
@@ -60,15 +96,40 @@
 .menu li {
     display: flex;
     align-items: center;
+    justify-content: space-between; 
+    position: relative;
     padding: 10px;
-    color: #555;
+    color: #9197B3;
     cursor: pointer;
     transition: background 0.3s;
+    padding-bottom: 20px;
+
+}
+
+.menu li.selecionado {
+    background-color: #57429D; 
+    border-radius: 10px; 
+}
+
+
+.menu li.selecionado mat-icon,
+.menu li.selecionado i,
+.menu li.selecionado span {
+    color: white; 
 }
 
 .menu li:hover {
-    background: #e5e5e5;
-    border-radius: 5px;
+    border-radius: 10px;
+}
+
+.menu li span {
+    flex-grow: 1;
+    text-align: left;
+}
+.menu li .Direita{
+    position: absolute;
+    right: 0.10px; 
+    font-size: 25px;
 }
 
 .menu i {
@@ -78,30 +139,16 @@
     color: #555;
 }
 
-.menu span {
-    margin-left: 10px;
-    font-size: 16px;
-}
 
 .sidebar.collapsed .menu span {
     display: none;
 }
 
-/* Item ativo */
-.menu .active {
-    background: #57429D;
-    color: white;
-    border-radius: 5px;
-}
 
-.menu .active i {
-    color: white;
-}
-
-/* Usuário */
 .user {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     margin-top: auto;
     padding-top: 20px;
 }
@@ -112,35 +159,17 @@
     border-radius: 50%;
 }
 
-.user-info {
-    margin-left: 10px;
+.user .role {
+    color: #9197B3;
 }
 
-.user-info .name {
-    font-weight: bold;
-    font-size: 16px;
-}
-
-.user-info .role {
-    font-size: 14px;
-    color: gray;
+.user-info{
+    gap: 30px;
 }
 
 .sidebar.collapsed .user-info {
     display: none;
 }
 
-/* Conteúdo */
-.content {
-    flex: 1;
-    padding: 20px;
-}
 
-.toggle-btn {
-    padding: 10px;
-    background: #57429D;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-}
+
