@@ -3,19 +3,36 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-planejar-viagem',
   templateUrl: './planejar-viagem.component.html',
-  styleUrl: './planejar-viagem.component.css',
+  styleUrls: ['./planejar-viagem.component.css'],
   standalone: false,
 })
 export class PlanejarViagemComponent {
-  mostrarObservacoes() {
-    const select = document.getElementById('observacoes') as HTMLSelectElement;
-    const textarea = document.getElementById('observacoes-texto') as HTMLTextAreaElement;
+  motorista: string = '';
+  dataSaida: string = '';
+  enderecoPartida: string = '';
+  enderecoChegada: string = '';
+  valor: number = 10;
+  vagas: number = 1;
+  observacoes: string = 'nao';
+  observacoesTexto: string = '';
+  exibirObservacoes: boolean = false;
 
-    if (select.value === 'sim') {
-      textarea.style.display = 'block';
-    } else {
-      textarea.style.display = 'none';
-    }
+  mostrarObservacoes() {
+    this.exibirObservacoes = this.observacoes === 'sim';
   }
 
+  cadastrarViagem() {
+    const viagem = {
+      motorista: this.motorista,
+      dataSaida: this.dataSaida,
+      enderecoPartida: this.enderecoPartida,
+      enderecoChegada: this.enderecoChegada,
+      valor: this.valor,
+      vagas: this.vagas,
+      observacoes: this.observacoesTexto
+    };
+
+    console.log('Viagem cadastrada:', viagem);
+    alert('Viagem cadastrada com sucesso!');
+  }
 }

@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router'; 
 import { AppComponent } from './app.component';
@@ -8,6 +9,7 @@ import { TelaLoginComponent } from './tela-login/tela-login.component';
 import { PlanejarViagemComponent } from './planejar-viagem/planejar-viagem.component';
 import { MinhasViagensComponent } from './minhas-viagens/minhas-viagens.component';
 import { MatIconModule } from '@angular/material/icon'; 
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   { path: 'tela-principal', component: TelaPrincipalComponent },
@@ -30,6 +32,8 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
+    FormsModule,
     MatIconModule, 
     RouterModule.forRoot(routes) 
   ],

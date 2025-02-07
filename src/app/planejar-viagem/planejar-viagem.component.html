@@ -1,51 +1,51 @@
 <div class="page-content">
-    <h2>Planejar viagem</h2>
-  
-    <div class="linha">
-      <div class="coluna">
-        <label for="motorista">Motorista</label>
-        <input type="text" id="motorista" placeholder="Nome">
-      </div>
-      <div class="coluna">
-        <label for="data-saida">Data de saída</label>
-        <input type="date" id="data-saida">
-      </div>
-      <div class="coluna">
-        <label for="endereco-partida">Endereço de partida</label>
-        <input type="text" id="endereco-partida" placeholder="Endereço">
-      </div>
+  <h2>Planejar viagem</h2>
+
+  <div class="linha">
+    <div class="coluna">
+      <label for="motorista">Motorista</label>
+      <input type="text" id="motorista" placeholder="Nome" [(ngModel)]="motorista">
     </div>
-  
-    <div class="linha">
-      <div class="coluna">
-        <label for="endereco-chegada">Endereço de chegada</label>
-        <input type="text" id="endereco-chegada" placeholder="Endereço">
-      </div>
-      <div class="coluna">
-        <label for="valor">Valor</label>
-        <input type="number" id="valor" value="10">
-      </div>
-      <div class="coluna">
-        <label for="vagas">Vagas</label>
-        <input type="number" id="vagas" value="01">
-      </div>
+    <div class="coluna">
+      <label for="data-saida">Data de saída</label>
+      <input type="date" id="data-saida" [(ngModel)]="dataSaida">
     </div>
-  
-    <div class="linha">
-      <div class="coluna">
-        <label for="observacoes">Observações</label>
-        <select id="observacoes" (change)="mostrarObservacoes()">
-            <option value="sim">Sim</option>
-            <option value="nao">Não</option>
-          </select>
-      </div>
+    <div class="coluna">
+      <label for="endereco-partida">Endereço de partida</label>
+      <input type="text" id="endereco-partida" placeholder="Endereço" [(ngModel)]="enderecoPartida">
     </div>
-  
-    <div class="linha">
-      <div class="coluna">
-        <textarea id="observacoes-texto" placeholder="Escreva suas observações"></textarea>
-      </div>
-    </div>
-    <button class="botao-enviar">Planejar</button>
   </div>
-  
+
+  <div class="linha">
+    <div class="coluna">
+      <label for="endereco-chegada">Endereço de chegada</label>
+      <input type="text" id="endereco-chegada" placeholder="Endereço" [(ngModel)]="enderecoChegada">
+    </div>
+    <div class="coluna">
+      <label for="valor">Valor</label>
+      <input type="number" id="valor" [(ngModel)]="valor">
+    </div>
+    <div class="coluna">
+      <label for="vagas">Vagas</label>
+      <input type="number" id="vagas" [(ngModel)]="vagas">
+    </div>
+  </div>
+
+  <div class="linha">
+    <div class="coluna">
+      <label for="observacoes">Observações</label>
+      <select id="observacoes" [(ngModel)]="observacoes" (change)="mostrarObservacoes()">
+        <option value="sim">Sim</option>
+        <option value="nao">Não</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="linha" *ngIf="exibirObservacoes">
+    <div class="coluna">
+      <textarea id="observacoes-texto" placeholder="Escreva suas observações" [(ngModel)]="observacoesTexto"></textarea>
+    </div>
+  </div>
+
+  <button class="botao-enviar" (click)="cadastrarViagem()">Planejar</button>
+</div>
