@@ -1,4 +1,4 @@
 import { Carona } from "./carona";
 
-export const CARONA: Carona[] = [
+export const CARONAS: Carona[] = [
 ]

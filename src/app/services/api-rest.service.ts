@@ -1,32 +1,35 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Carona } from '../modelo/carona/carona';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-  private apiUrl = 'http://localhost:3000/items'; 
+  private URL_CARONA = 'http://localhost:3000/items'; 
 
   constructor(private http: HttpClient) {}
 
-  getItems(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl);
+  cadastrar(carona: Carona): Observable<Carona> {
+    delete carona.id;
+    return this.http.post<Carona>(this.URL_CARONA, carona);
   }
 
-  getItem(id: number): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/${id}`);
+  listar(): Observable<Carona[]> {
+    return this.http.get<Carona[]>(this.URL_CARONA);
   }
 
-  addItem(item: any): Observable<any> {
-    return this.http.post<any>(this.apiUrl, item);
+  remover(id: string): Observable<any> {
+    return this.http.delete(`${this.URL_CARONA}/${id}`);
   }
 
-  updateItem(id: number, item: any): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}/${id}`, item);
+  pesquisarPorId(idEdicao: string): Observable<Carona> {
+    return this.http.get<Carona>(`${this.URL_CARONA}/${idEdicao}`);
   }
 
-  deleteItem(id: number): Observable<any> {
-    return this.http.delete<any>(`${this.apiUrl}/${id}`);
+  atualizar(carona: Carona): Observable<Carona> {
+    return this.http.put<Carona>(`${this.URL_CARONA}/${carona.id}`, carona);
   }
+
 }
