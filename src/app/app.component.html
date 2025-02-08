@@ -12,7 +12,6 @@
         </div>
     </div>
 
-    <!-- Menu -->
     <ul class="menu">
         <li (click)="selecionarItem(0, $event)" [routerLink]="'/tela-principal'"
             [ngClass]="{'selecionado': itemSelecionado === 0}"
@@ -57,8 +56,6 @@
 
 
 
-
-    <!-- Usuário -->
     <div class="user">
         <img src="motorista.png" alt="Usuário">
         <div class="user-info" *ngIf="!isCollapsed">
