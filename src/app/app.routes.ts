@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
-import { TelaLoginComponent } from "./tela-login/tela-login.component"
-import { TelaCadastroComponent } from "./tela-cadastro/tela-cadastro.component"
-import { TelaPrincipalComponent } from "./tela-principal/tela-principal.component"
+import { TelaLoginComponent } from "./telas-componentes/tela-login/tela-login.component"
+import { TelaCadastroComponent } from "./telas-componentes/tela-cadastro/tela-cadastro.component"
+import { TelaPrincipalComponent } from "./telas-componentes/tela-principal/tela-principal.component"
 import { SidebarComponent } from "./sidebar/sidebar.component"
 
 

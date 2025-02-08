@@ -1,20 +1,20 @@
 import { Component } from '@angular/core';
-import { Carona } from '../../app/modelo/carona/carona';
-import { ApiService } from '../services/api-rest.service';
-import { MensagemSweetService } from '../services/mensagem-sweet.service';
+import { Carona } from '../../modelo/carona/carona';
+import { ApiService } from '../../services/api-rest.service';
+import { MensagemSweetService } from '../../services/mensagem-sweet.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-planejar-viagem',
+  selector: 'app-cadastrar-viagem',
   templateUrl: './planejar-viagem.component.html',
   styleUrls: ['./planejar-viagem.component.css'],
   standalone:false,
 })
 export class PlanejarViagemComponent {
-  carona: Carona = new Carona(); 
-  observacoes: string = 'nao';
-  observacoesTexto: string = '';
+  carona: Carona = new Carona();
   exibirObservacoes: boolean = false;
+  observacoesTexto: string = '';
+
 
   constructor(
     private apiService: ApiService,
@@ -30,9 +30,8 @@ export class PlanejarViagemComponent {
     }
 
     this.apiService.cadastrar(this.carona).subscribe({
-      next: (viagemCadastrada) => {
+      next: () => {
         this.mensagemService.sucesso('Viagem cadastrada com sucesso!');
-        this.roteador.navigate(['/minhas-viagens']);
       },
       error: (erro) => {
         console.error('Erro ao cadastrar viagem:', erro);
@@ -42,20 +41,23 @@ export class PlanejarViagemComponent {
   }
 
   mostrarObservacoes() {
-    this.exibirObservacoes = this.observacoes === 'sim';
+    this.exibirObservacoes = this.carona.observacoes;
   }
 
 
   validarDados(): boolean {
     return (
-      !!this.carona.motorista &&
+      !!this.carona.motorista?.trim() &&
       !!this.carona.dataSaida &&
-      !!this.carona.enderecoPartida &&
-      !!this.carona.enderecoChegada &&
+      !!this.carona.enderecoPartida?.trim() &&
+      !!this.carona.enderecoChegada?.trim() &&
       this.carona.valor !== undefined &&
+      this.carona.valor > 0 &&
       this.carona.vagas !== undefined &&
-      this.carona.observacoes !== null && this.carona.observacoes !== undefined && 
-      (this.carona.observacoes ? !!this.carona.textoObservacoes : true)
+      this.carona.vagas > 0 &&
+      this.carona.observacoes !== null &&
+      this.carona.observacoes !== undefined &&
+      (this.carona.observacoes ? !!this.carona.textoObservacoes?.trim() : true)
     );
   }
 

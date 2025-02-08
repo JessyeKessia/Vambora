@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 
+// @ts-ignore
 @Component({
-  selector: 'app-minhas-viagens',
+  selector: 'app-listar-viagens',
   templateUrl: './minhas-viagens.component.html',
   styleUrl: './minhas-viagens.component.css',
   standalone: false,

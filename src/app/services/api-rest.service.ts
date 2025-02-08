@@ -7,7 +7,7 @@ import { Carona } from '../modelo/carona/carona';
   providedIn: 'root'
 })
 export class ApiService {
-  private URL_CARONA = 'http://localhost:3000/items'; 
+  private URL_CARONA = 'http://localhost:3000/caronas';
 
   constructor(private http: HttpClient) {}
 
