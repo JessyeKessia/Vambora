@@ -3,9 +3,19 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "VamboraPweb1": {
+    "vambora": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "standalone": false
+        },
+        "@schematics/angular:directive": {
+          "standalone": false
+        },
+        "@schematics/angular:pipe": {
+          "standalone": false
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -13,7 +23,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/vambora-pweb1",
+            "outputPath": "dist/vambora",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -27,6 +37,7 @@
               }
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/rose-red.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -59,10 +70,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "VamboraPweb1:build:production"
+              "buildTarget": "vambora:build:production"
             },
             "development": {
-              "buildTarget": "VamboraPweb1:build:development"
+              "buildTarget": "vambora:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -85,6 +96,7 @@
               }
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/rose-red.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -94,6 +106,6 @@
     }
   },
   "cli": {
-    "analytics": "93207adb-beeb-4912-a62d-7a334a616157"
+    "analytics": false
   }
 }
