@@ -1,74 +1,7 @@
-<div class="container">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<div class="content">
+    <app-sidenav></app-sidenav>
 
-<div class="sidebar" [class.collapsed]="isCollapsed">
-    <div class="top">
-        <button (click)="toggleSidebar()" class="toggle-btn">
-            <i class="fas fa-bars"></i>
-        </button>
-        <div class="logo">
-            <img src="logo.png" alt="Logo">
-            <span class="logo-text" *ngIf="!isCollapsed">VamBora <small class="pequenoCinza">v.01</small></span>
-        </div>
-    </div>
-
-    <ul class="menu">
-        <li (click)="selecionarItem(0, $event)" [routerLink]="'/tela-principal'"
-            [ngClass]="{'selecionado': itemSelecionado === 0}"
-            role="button" aria-label="Página Inicial">
-            <mat-icon>home</mat-icon>
-            <span *ngIf="!isCollapsed">Home</span>
-            <mat-icon class="direita">chevron_right</mat-icon>
-        </li>
-
-        <li (click)="selecionarItem(1, $event)" [routerLink]="'/listar-viagens'"
-            [ngClass]="{'selecionado': itemSelecionado === 1}"
-            role="button" aria-label="Minhas viagens">
-            <mat-icon>luggage</mat-icon>
-            <span *ngIf="!isCollapsed">Minhas viagens</span>
-            <mat-icon class="direita">chevron_right</mat-icon>
-        </li>
-
-        <li (click)="selecionarItem(2, $event)" [routerLink]="'/cadastrar-viagem'"
-            [ngClass]="{'selecionado': itemSelecionado === 2}"
-            role="button" aria-label="Planejar viagem">
-            <mat-icon>directions_car</mat-icon>
-            <span *ngIf="!isCollapsed">Planejar viagem</span>
-            <mat-icon class="direita">chevron_right</mat-icon>
-        </li>
-
-        <li (click)="selecionarItem(3, $event)" [routerLink]="'/listar-viagens'"
-            [ngClass]="{'selecionado': itemSelecionado === 3}"
-            role="button" aria-label="Listar viagens">
-            <mat-icon>emoji_transportation</mat-icon>
-            <span *ngIf="!isCollapsed">Listar viagens</span>
-            <mat-icon class="direita">chevron_right</mat-icon>
-        </li>
-
-        <li (click)="selecionarItem(4, $event)" [routerLink]="'/help'"
-            [ngClass]="{'selecionado': itemSelecionado === 4}"
-            role="button" aria-label="Ajuda">
-            <mat-icon>help</mat-icon>
-            <span *ngIf="!isCollapsed">Help</span>
-            <mat-icon class="direita">chevron_right</mat-icon>
-        </li>
-    </ul>
-
-
-
-    <div class="user">
-        <img src="motorista.png" alt="Usuário">
-        <div class="user-info" *ngIf="!isCollapsed">
-            <span class="name">Evano</span>
-            <br>
-            <span class="role">Motorista</span>
-        </div>
-        <mat-icon class="role">keyboard_arrow_down</mat-icon>
-    </div>
-</div>
-<router-outlet></router-outlet>
-
-  <div class="content">
-    <router-outlet></router-outlet>
-  </div>
+    <main>
+        <router-outlet></router-outlet>
+    </main>
 </div>
