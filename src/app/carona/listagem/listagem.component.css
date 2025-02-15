@@ -14,9 +14,9 @@
     padding: 20px;
 }
 table {
-    width: 100%; /* Deixa a tabela esticada até a largura máxima */
-    background-color: white; /* Cor de fundo branca */
-    border-radius: 12px; /* Bordas arredondadas para a tabela */
+    width: 100%; 
+    background-color: white; 
+    border-radius: 12px; 
     overflow: hidden; 
     font-size: 18px; 
 }

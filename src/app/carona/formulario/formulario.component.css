@@ -54,6 +54,7 @@ textarea {
 .botao-enviar {
     margin-top: 20px; 
     background-color: #57429D; 
+    --mdc-filled-button-container-color: #57429D;
     color: white; 
     padding: 10px 20px; 
     border: none; 

@@ -1,0 +1,35 @@
+:host {
+    margin: 0; 
+    width: 100%;
+    height: 700px;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}
+
+.page-content {
+    width: 900px; 
+    height: 400px;
+    background-color: white;
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+}
+
+.page-content h2 {
+    color: #57429D; 
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.page-content .Texto {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.page-content .Texto p {
+    margin-bottom: 10px;
+}
