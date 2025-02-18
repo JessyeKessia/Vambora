@@ -33,3 +33,11 @@ td {
     background-color: white ; 
     border-radius: 5px;
 }
+::ng-deep .mdc-evolution-chip__cell--primary {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    background-color: rgba(0, 128, 0, 0.3);
+    color: white;
+    width: 60px;
+}     

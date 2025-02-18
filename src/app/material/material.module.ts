@@ -4,6 +4,8 @@ import { MatIconModule } from '@angular/material/icon';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableModule} from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
+import {MatChipsModule} from '@angular/material/chips';
+
 
 
 @NgModule({
@@ -13,14 +15,16 @@ import {MatButtonModule} from '@angular/material/button';
     MatIconModule,
     MatPaginatorModule,
     MatTableModule,
-    MatButtonModule
+    MatButtonModule,
+    MatChipsModule
   ],
   exports: [
       CommonModule,
       MatIconModule,
       MatPaginatorModule,
       MatTableModule,
-      MatButtonModule
+      MatButtonModule,
+      MatChipsModule
   ],
 })
 export class MaterialModule { }
