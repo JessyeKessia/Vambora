@@ -1,57 +1,25 @@
 <div class="sidebar" [class.collapsed]="isCollapsed">
-    <div class="top">
-        <button (click)="toggleSidebar()" class="toggle-btn">
-            <i class="fas fa-bars"></i>
-        </button>
-        <div class="logo">
-            <img src="logo.png" alt="Logo">
-            <span class="logo-text" *ngIf="!isCollapsed">VamBora <small class="pequenoCinza">v.01</small></span>
+    <div class="sidebar-links">
+        <div class="top">
+            <button (click)="toggleSidebar()" class="toggle-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="logo">
+                <img src="logo.png" alt="Logo">
+                <span class="logo-text" *ngIf="!isCollapsed">VamBora <small class="pequenoCinza">v.01</small></span>
+            </div>
         </div>
+    
+        <ul class="menu">
+            <li *ngFor="let item of menuItems; let i = index" (click)="selecionarItem(i, $event)" 
+                [routerLink]="item.link" [ngClass]="{'selecionado': itemSelecionado === i}"
+                role="button" [attr.aria-label]="'Página Inicial'">
+              <mat-icon>{{ item.icon }}</mat-icon>
+              <span *ngIf="!isCollapsed">{{ item.label }}</span>
+              <mat-icon class="direita">chevron_right</mat-icon> 
+            </li>
+        </ul>
     </div>
-
-    <ul class="menu">
-        <li (click)="selecionarItem(0, $event)" [routerLink]="'/telaprincipal'"
-            [ngClass]="{'selecionado': itemSelecionado === 0}"
-            role="button" aria-label="Página Inicial">
-            <mat-icon>home</mat-icon>
-            <span *ngIf="!isCollapsed">Home</span>
-            <mat-icon class="direita">chevron_right</mat-icon>
-        </li>
-
-        <li (click)="selecionarItem(1, $event)" [routerLink]="'/minhascaronas'"
-            [ngClass]="{'selecionado': itemSelecionado === 1}"
-            role="button" aria-label="Minhas caronas">
-            <mat-icon>luggage</mat-icon>
-            <span *ngIf="!isCollapsed">Minhas caronas</span>
-            <mat-icon class="direita">chevron_right</mat-icon>
-        </li>
-
-        <li (click)="selecionarItem(2, $event)" [routerLink]="'/planejarviagens'"
-            [ngClass]="{'selecionado': itemSelecionado === 2}"
-            role="button" aria-label="Planejar viagem">
-            <mat-icon>directions_car</mat-icon>
-            <span *ngIf="!isCollapsed">Planejar viagem</span>
-            <mat-icon class="direita">chevron_right</mat-icon>
-        </li>
-
-        <li (click)="selecionarItem(3, $event)" [routerLink]="'/listarviagens'"
-            [ngClass]="{'selecionado': itemSelecionado === 3}"
-            role="button" aria-label="Listar viagens">
-            <mat-icon>emoji_transportation</mat-icon>
-            <span *ngIf="!isCollapsed">Listar viagens</span>
-            <mat-icon class="direita">chevron_right</mat-icon>
-        </li>
-
-        <li (click)="selecionarItem(4, $event)" [routerLink]="'/help'"
-            [ngClass]="{'selecionado': itemSelecionado === 4}"
-            role="button" aria-label="Ajuda">
-            <mat-icon>help</mat-icon>
-            <span *ngIf="!isCollapsed">Help</span>
-            <mat-icon class="direita">chevron_right</mat-icon>
-        </li>
-    </ul>
-
-
 
     <div class="user">
         <img src="motorista.png" alt="Usuário">
@@ -62,4 +30,7 @@
         </div>
         <mat-icon class="role">keyboard_arrow_down</mat-icon>
     </div>
+
+    <!-- Área clicável na lateral direita -->
+    <div class="collapse-trigger" (click)="toggleSidebar()"></div>
 </div>

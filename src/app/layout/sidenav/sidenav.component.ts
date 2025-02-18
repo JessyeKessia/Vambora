@@ -3,21 +3,24 @@ import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-sidenav',
-  standalone: false,
   templateUrl: './sidenav.component.html',
-  styleUrl: './sidenav.component.css'
+  styleUrls: ['./sidenav.component.css'],
+  standalone: false
 })
 export class SidenavComponent {
-
-  title = 'VamboraPweb1';
   isCollapsed = false;
-  itemSelecionado: number = -1; 
+  itemSelecionado: number = -1;
+
+  menuItems = [
+    { label: 'Home', icon: 'home', link: '/tela-principal' },
+    { label: 'Minhas caronas', icon: 'luggage', link: '/minhascaronas' },
+    { label: 'Planejar viagem', icon: 'directions_car', link: '/planejarviagens' },
+    { label: 'Listar viagens', icon: 'emoji_transportation', link: '/listarviagens' },
+    { label: 'Help', icon: 'help', link: '/help' }
+  ];
 
   constructor(private router: Router) {
-
     this.atualizarSelecaoPorRota(this.router.url);
-
-
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.atualizarSelecaoPorRota(event.urlAfterRedirects);
@@ -35,16 +38,7 @@ export class SidenavComponent {
   }
 
   private atualizarSelecaoPorRota(url: string) {
-    if (url.startsWith('/tela-principal')) {
-      this.itemSelecionado = 0;
-    } else if (url.startsWith('/listar-viagens')) {
-      this.itemSelecionado = 1;
-    } else if (url.startsWith('/formulario')) {
-      this.itemSelecionado = 2;
-    } else if (url.startsWith('/help')) {
-      this.itemSelecionado = 4;
-    } else {
-      this.itemSelecionado = -1; 
-    }
+    const itemIndex = this.menuItems.findIndex(item => url.startsWith(item.link));
+    this.itemSelecionado = itemIndex >= 0 ? itemIndex : -1;
   }
 }
