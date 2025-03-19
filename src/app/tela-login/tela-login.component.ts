@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { PassageiroFireService } from '../shared/servicos/passageiro-fire.service';
 import { MotoristaFireService } from '../shared/servicos/motorista-fire.service';
-import { catchError } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { MensagemSweetService } from '../shared/servicos/mensagem-sweet.service';
 
 @Component({
   selector: 'app-tela-login',
@@ -16,9 +15,10 @@ export class TelaLoginComponent {
   senha: string = '';
 
   constructor(
-    private router: Router, // Injeção do Router
-    private passageiroService: PassageiroFireService, // Injeção do PassageiroFireService
-    private motoristaService: MotoristaFireService // Injeção do MotoristaFireService
+    private router: Router,
+    private passageiroService: PassageiroFireService,
+    private motoristaService: MotoristaFireService,
+    private mensagemService: MensagemSweetService
   ) {}
 
   login() {
@@ -26,33 +26,36 @@ export class TelaLoginComponent {
   }
 
   verificarUsuario(email: string, senha: string) {
-    // Primeiro, tentamos verificar o passageiro
-    this.passageiroService.logarPassageiro(email, senha).pipe(
-      catchError((error) => {
-        console.error('Erro ao verificar passageiro:', error);
-        return of(null); // Retorna um observable vazio se ocorrer um erro
-      })
-    ).subscribe(passageiro => {
-      if (passageiro) {
-        console.log('Usuário encontrado como passageiro');
-        this.router.navigate(['/dashboard']);
-        return;
-      }
 
-      // Caso contrário, verificamos o motorista
-      this.motoristaService.logarMotorista(email, senha).pipe(
-        catchError((error) => {
-          console.error('Erro ao verificar motorista:', error);
-          return of(null); // Retorna um observable vazio se ocorrer um erro
-        })
-      ).subscribe(motorista => {
-        if (motorista) {
-          console.log('Usuário encontrado como motorista');
-          this.router.navigate(['/dashboard']);
-        } else {
-          console.log('Usuário não encontrado');
+    this.passageiroService.logarPassageiro(email, senha).subscribe({
+      next: (passageiro) => {
+        if (passageiro) {
+          this.mensagemService.sucesso('Sucesso ao logar');
+          this.router.navigate(['/tela-principal']);
+          return;
         }
-      });
+        this.verificarMotorista(email, senha);
+      },
+      error: (error) => {
+        this.mensagemService.erro('Erro ao localizar usuário');
+        this.verificarMotorista(email, senha);
+      }
+    });
+  }
+
+
+  private verificarMotorista(email: string, senha: string) {
+    this.motoristaService.logarMotorista(email, senha).subscribe({
+      next: (motorista) => {
+        if (motorista) {
+          this.router.navigate(['/tela-principal']);
+        } else {
+          this.mensagemService.erro('Usuário não encontrado');
+        }
+      },
+      error: (error) => {
+        this.mensagemService.erro('Erro ao localizar usuário');
+      }
     });
   }
 

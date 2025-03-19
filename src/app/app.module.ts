@@ -17,8 +17,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
 
 import { FirestoreModule } from './firestore/firestore.module';
-import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
-import { getAuth, provideAuth } from '@angular/fire/auth'; 
 import { firebaseConfig } from '../../firebase.config';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
@@ -49,16 +47,13 @@ import { MotoristaFireService } from './shared/servicos/motorista-fire.service';
     MatButtonModule,
     MatTabsModule,
     FirestoreModule,
-    AngularFireModule.initializeApp(firebaseConfig), 
+    AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
     AngularFirestoreModule
-
   ],
   providers: [
     provideAnimationsAsync(),
-    provideFirebaseApp(() => initializeApp({ projectId: "vambora-users", appId: "1:863307189559:web:6854559b671a6e3df85eb2", storageBucket: "vambora-users.firebasestorage.app", apiKey: "AIzaSyBM9ePfMO2u80AQkjEwHID70jFAzUVyPg0", authDomain: "vambora-users.firebaseapp.com", messagingSenderId: "863307189559", measurementId: "G-GJFDY1JRGG" })),
-    provideAuth(() => getAuth()),
-    PassageiroFireService, 
+    PassageiroFireService,
     MotoristaFireService
   ],
   bootstrap: [AppComponent]

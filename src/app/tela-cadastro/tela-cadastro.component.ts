@@ -46,7 +46,6 @@ export class TelaCadastroComponent {
       this.motorista = { ...this.formData }; 
       this.cadastrarMotorista();
     }
-    console.log('Motorista no submit:', this.motorista); 
   }
   
   
@@ -69,6 +68,7 @@ export class TelaCadastroComponent {
   cadastrarMotorista() {
     if (!this.validarDadosMotorista()) {
       this.mensagemService.erro('Preencha todos os campos obrigatórios!');
+      console.log("o erro está aqui");
       return;
     }
     this.motoristaService.cadastrarMotorista(this.motorista).subscribe(
@@ -101,21 +101,8 @@ export class TelaCadastroComponent {
       !!this.motorista.email?.trim() &&
       this.motorista.senha !== undefined &&
       !!this.motorista.cnh?.trim() &&
-      this.validarCNH(this.motorista.cnh) &&
       !!this.motorista.placa?.trim() &&
-      this.validarPlaca(this.motorista.placa) &&
       !!this.motorista.modelo?.trim()
     );
-  }
-  
-
-  validarCNH(cnh: string): boolean {
-    const regex = /^[A-Z]{3}\d{6}$/;
-    return regex.test(cnh);
-  }
-
-  validarPlaca(placa: string): boolean {
-    const regex = /^[A-Z]{3}-\d{4}$/;
-    return regex.test(placa);
   }
 }

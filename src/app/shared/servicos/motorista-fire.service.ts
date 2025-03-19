@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject, Injector, runInInjectionContext } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from "@angular/fire/compat/firestore";
 import { Motorista } from "../modelo/motorista";
 import { from, Observable, map, switchMap } from "rxjs";
@@ -8,7 +8,7 @@ import { MotoristaService } from './motorista.service';
   providedIn: 'root'
 })
 export class MotoristaFireService implements MotoristaService {
-
+  private injector = inject(Injector);
   private colecaoMotorista: AngularFirestoreCollection<Motorista>;
   NOME_COLECAO = 'motorista';
 
@@ -56,27 +56,29 @@ export class MotoristaFireService implements MotoristaService {
   }
 
   logarMotorista(email: string, senha: string): Observable<Motorista | null> {
-    return this.firestore.collection(this.NOME_COLECAO, ref =>
-      ref.where('email', '==', email).where('senha', '==', senha)
-    ).get().pipe(
-      map(snapshot => {
-        if (snapshot.empty) {
-          return null;
-        }
-        const data = snapshot.docs[0].data() as { nome: string, sobrenome: string, telefone: string, email: string, senha: string, cnh: string, placa: string, modelo: string };
-        const motorista: Motorista = new Motorista(
-          snapshot.docs[0].id,
-          data.nome,
-          data.sobrenome,
-          data.telefone,
-          data.email,
-          data.senha,
-          data.cnh,
-          data.placa,
-          data.modelo
-        );
-        return motorista;
-      })
-    );
+    return runInInjectionContext(this.injector, () => {
+      return this.firestore.collection(this.NOME_COLECAO, ref =>
+        ref.where('email', '==', email).where('senha', '==', senha)
+      ).get().pipe(
+        map(snapshot => {
+          if (snapshot.empty) {
+            return null;
+          }
+          const data = snapshot.docs[0].data() as { nome: string, sobrenome: string, telefone: string, email: string, senha: string, cnh: string, placa: string, modelo: string };
+          const motorista: Motorista = new Motorista(
+            snapshot.docs[0].id,
+            data.nome,
+            data.sobrenome,
+            data.telefone,
+            data.email,
+            data.senha,
+            data.cnh,
+            data.placa,
+            data.modelo
+          );
+          return motorista;
+        })
+      );
+    });
   }
 }
