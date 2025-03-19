@@ -1,0 +1,25 @@
+<div class="login-container">
+  <div class="login-left">
+    <img src="logo.png" alt="Ícone de Carro">
+    <h1>Bem Vindo de volta!</h1>
+    <p>Encontre uma carona acessível.</p>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" [(ngModel)]="email" placeholder="exemplo@email.com">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Senha</mat-label>
+      <input matInput type="password" [(ngModel)]="senha" placeholder="Digite sua senha">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="login()">Entrar</button>
+  </div>
+
+  <div class="login-right">
+    <p>Inscreva-se e encontre uma carona compartilhada e economize no transporte!</p>
+    <button mat-raised-button class="inscrever-se" (click)="irParaCadastro()">Inscrever-se</button>
+    <img src="carro.png" alt="Imagem de Carro">
+  </div>
+</div>

@@ -1,0 +1,72 @@
+<div class="container">
+    <!-- Seção da esquerda -->
+    <div class="left-panel">
+      <p>Faça o login e encontre uma carona para o seu destino agora mesmo!</p>
+      <button mat-flat-button color="accent" (click)="irParaLogin()">Entrar</button>
+      <img src="carro.png" alt="Carro ilustrativo" class="car-image">
+    </div>
+  
+    <!-- Seção da direita -->
+    <div class="right-panel">
+      <mat-tab-group [(selectedIndex)]="selectedIndex">
+        <mat-tab label="Passageiro"></mat-tab>
+        <mat-tab label="Motorista"></mat-tab>
+      </mat-tab-group>
+  
+      <form (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline">
+          <mat-label>Nome</mat-label>
+          <input matInput placeholder="Digite seu nome" [(ngModel)]="formData.nome" name="nome" required>
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline">
+          <mat-label>Sobrenome</mat-label>
+          <input matInput placeholder="Digite seu sobrenome" [(ngModel)]="formData.sobrenome" name="sobrenome" required>
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline">
+          <mat-label>Telefone</mat-label>
+          <input matInput placeholder="(83) 90000-0000" [(ngModel)]="formData.telefone" name="telefone" required>
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="email@exemplo.com" [(ngModel)]="formData.email" name="email" required>
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline">
+          <mat-label>Senha</mat-label>
+          <input matInput type="password" placeholder="********" [(ngModel)]="formData.senha" name="senha" required>
+        </mat-form-field>
+  
+        <!-- Campos exclusivos para Motorista -->
+        <div *ngIf="selectedIndex === 1">
+          <mat-form-field appearance="outline">
+            <mat-label>CNH</mat-label>
+            <input matInput placeholder="Número da sua CNH" [(ngModel)]="formData.cnh" name="cnh" required>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Placa do Veículo</mat-label>
+            <input matInput placeholder="ABC-1234" [(ngModel)]="formData.placa" name="placa" required>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Modelo do Veículo</mat-label>
+            <input matInput placeholder="Modelo do seu veículo" [(ngModel)]="formData.modelo" name="modelo" required>
+          </mat-form-field>
+        </div>
+  
+        <!-- Campo para Passageiro -->
+        <div *ngIf="selectedIndex === 0">
+          <mat-form-field appearance="outline">
+            <mat-label>CPF</mat-label>
+            <input matInput placeholder="000.000.000-00" [(ngModel)]="formData.cpf" name="cpf" required>
+          </mat-form-field>
+        </div>
+  
+        <button mat-flat-button color="accent" class="btn-cadastrar" type="submit">Cadastrar</button>
+      </form>
+    </div>
+  </div>
+  

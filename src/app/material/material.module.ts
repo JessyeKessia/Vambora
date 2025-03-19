@@ -5,6 +5,10 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableModule} from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
 import {MatChipsModule} from '@angular/material/chips';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatTabsModule } from '@angular/material/tabs';
 
 
 
@@ -16,7 +20,11 @@ import {MatChipsModule} from '@angular/material/chips';
     MatPaginatorModule,
     MatTableModule,
     MatButtonModule,
-    MatChipsModule
+    MatChipsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatTabsModule,
+    BrowserAnimationsModule,
   ],
   exports: [
       CommonModule,

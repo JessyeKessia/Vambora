@@ -1,5 +1,7 @@
 <div class="content">
-    <app-sidenav></app-sidenav>
+    <ng-container *ngIf="!isLogin">
+        <app-sidenav></app-sidenav>
+    </ng-container>
 
     <main>
         <router-outlet></router-outlet>
