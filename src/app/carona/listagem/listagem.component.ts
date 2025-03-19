@@ -17,6 +17,7 @@ export interface PeriodicElement {
 })
 
 export class ListagemComponent implements OnInit {
+carona: any;
 
   constructor(
       private apiService: CaronaRestService

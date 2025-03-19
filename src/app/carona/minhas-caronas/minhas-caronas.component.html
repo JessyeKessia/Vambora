@@ -1,0 +1,39 @@
+<div class="page-content">
+    <p>{{tipoUsuario}} : {{ nomeUsuario }}</p>
+    <h2>Minhas Viagens</h2>
+    
+    <table>
+      <thead>
+        <tr>
+          <th>Motorista</th>
+          <th>Data de Saída</th>
+          <th>Endereço de Partida</th>
+          <th>Endereço de Chegada</th>
+          <th>Valor</th>
+          <th>Vagas</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let viagem of viagens">
+          <td>{{ viagem.motorista }}</td>
+          <td>{{ viagem.data }}</td>
+          <td>{{ viagem.partidaEndereco }}</td>
+          <td>{{ viagem.chegadaEndereco }}</td>
+          <td>{{ viagem.valor }}</td>
+          <td>
+            <mat-chip-set>
+              <mat-chip>{{ viagem.vagas }}</mat-chip>
+            </mat-chip-set>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <mat-paginator 
+      [length]="totalItems"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="pageSizeOptions"
+      (page)="handlePageEvent($event)"
+      aria-label="Selecione a página">
+    </mat-paginator>
+  </div>

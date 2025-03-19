@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { PassageiroFireService } from '../shared/servicos/passageiro-fire.service';  
-import { MotoristaFireService } from '../shared/servicos/motorista-fire.service';  
+import { PassageiroFireService } from '../shared/servicos/passageiro-fire.service';
+import { MotoristaFireService } from '../shared/servicos/motorista-fire.service';
 import { MensagemSweetService } from '../shared/servicos/mensagem-sweet.service';
 
 @Component({
@@ -11,17 +11,17 @@ import { MensagemSweetService } from '../shared/servicos/mensagem-sweet.service'
   styleUrls: ['./tela-cadastro.component.css']
 })
 export class TelaCadastroComponent {
-  motorista: any = {}; 
-  passageiro: any = {}; 
+  motorista: any = {};
+  passageiro: any = {};
 
   constructor(
-    private passageiroService: PassageiroFireService,  
+    private passageiroService: PassageiroFireService,
     private motoristaService: MotoristaFireService,
     private router: Router,
     private mensagemService: MensagemSweetService
   ) { }
 
-  selectedIndex: number = 0; 
+  selectedIndex: number = 0;
   formData = {
     nome: '',
     sobrenome: '',
@@ -40,15 +40,15 @@ export class TelaCadastroComponent {
 
   onSubmit() {
     if (this.selectedIndex === 0) {
-      this.passageiro = { ...this.formData }; 
+      this.passageiro = { ...this.formData };
       this.cadastrarPassageiro();
     } else if (this.selectedIndex === 1) {
-      this.motorista = { ...this.formData }; 
+      this.motorista = { ...this.formData };
       this.cadastrarMotorista();
     }
   }
-  
-  
+
+
 
   cadastrarPassageiro() {
     if (!this.validarDadosPassageiro()) {

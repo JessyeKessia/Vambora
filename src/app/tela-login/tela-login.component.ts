@@ -26,34 +26,33 @@ export class TelaLoginComponent {
   }
 
   verificarUsuario(email: string, senha: string) {
-
     this.passageiroService.logarPassageiro(email, senha).subscribe({
       next: (passageiro) => {
         if (passageiro) {
+          localStorage.setItem('usuario', JSON.stringify({ nome: passageiro.nome, tipo: 'Passageiro' }));
           this.mensagemService.sucesso('Sucesso ao logar');
           this.router.navigate(['/tela-principal']);
           return;
         }
         this.verificarMotorista(email, senha);
       },
-      error: (error) => {
-        this.mensagemService.erro('Erro ao localizar usuário');
+      error: () => {
         this.verificarMotorista(email, senha);
       }
     });
   }
 
-
   private verificarMotorista(email: string, senha: string) {
     this.motoristaService.logarMotorista(email, senha).subscribe({
       next: (motorista) => {
         if (motorista) {
+          localStorage.setItem('usuario', JSON.stringify({ nome: motorista.nome, tipo: 'Motorista' }));
           this.router.navigate(['/tela-principal']);
         } else {
           this.mensagemService.erro('Usuário não encontrado');
         }
       },
-      error: (error) => {
+      error: () => {
         this.mensagemService.erro('Erro ao localizar usuário');
       }
     });

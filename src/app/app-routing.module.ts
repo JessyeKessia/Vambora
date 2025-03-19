@@ -5,6 +5,7 @@ import {FormularioComponent} from "./carona/formulario/formulario.component";
 import {TelaPrincipalComponent} from "./tela-principal/tela-principal.component";
 import { TelaLoginComponent } from './tela-login/tela-login.component';
 import { TelaCadastroComponent } from './tela-cadastro/tela-cadastro.component';
+import { MinhasCaronasComponent } from "./carona/minhas-caronas/minhas-caronas.component"
 
 
 const routes: Routes = [
@@ -13,7 +14,7 @@ const routes: Routes = [
     component: TelaLoginComponent,
     pathMatch: 'full'
   },
-  {    
+  {
     path: 'minhascaronas',
     component: ListagemComponent
   },
@@ -25,12 +26,16 @@ const routes: Routes = [
     path: 'tela-principal',
     component: TelaPrincipalComponent
   },
-  { path: 'tela-login', 
-    component: TelaLoginComponent 
+  { path: 'tela-login',
+    component: TelaLoginComponent
   },
-  { path: 'tela-cadastro', 
-    component: TelaCadastroComponent 
+  { path: 'tela-cadastro',
+    component: TelaCadastroComponent
   },
+  {
+    path: "tela-listagem",
+    component: MinhasCaronasComponent
+  }
 ];
 
 @NgModule({

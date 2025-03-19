@@ -15,15 +15,18 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatMenuModule } from '@angular/material/menu';
 
 import { FirestoreModule } from './firestore/firestore.module';
 import { firebaseConfig } from '../../firebase.config';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { UsuarioService } from './shared/servicos/usuario.service';
 
 import { PassageiroFireService } from './shared/servicos/passageiro-fire.service';
 import { MotoristaFireService } from './shared/servicos/motorista-fire.service';
+import { MatIconModule } from '@angular/material/icon';
 
 
 
@@ -49,12 +52,16 @@ import { MotoristaFireService } from './shared/servicos/motorista-fire.service';
     FirestoreModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    MatMenuModule,
+    MatIconModule,
+
   ],
   providers: [
     provideAnimationsAsync(),
     PassageiroFireService,
-    MotoristaFireService
+    MotoristaFireService,
+    UsuarioService
   ],
   bootstrap: [AppComponent]
 })

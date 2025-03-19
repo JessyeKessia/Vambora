@@ -8,7 +8,7 @@ import { Carona } from '../modelo/carona';
 })
 export class CaronaRestService {
 
-  private URL_CARONA = 'http://localhost:3001/caronas';
+  private URL_CARONA = 'http://localhost:3000/caronas';
 
   constructor(private http: HttpClient) {}
 

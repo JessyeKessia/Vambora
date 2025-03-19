@@ -9,6 +9,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatMenuModule } from '@angular/material/menu';
+
 
 
 
@@ -25,14 +27,20 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatInputModule,
     MatTabsModule,
     BrowserAnimationsModule,
+    MatMenuModule
   ],
   exports: [
-      CommonModule,
-      MatIconModule,
-      MatPaginatorModule,
-      MatTableModule,
-      MatButtonModule,
-      MatChipsModule
+    CommonModule,
+    MatIconModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatButtonModule,
+    MatChipsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatTabsModule,
+    BrowserAnimationsModule,
+    MatMenuModule
   ],
 })
 export class MaterialModule { }
