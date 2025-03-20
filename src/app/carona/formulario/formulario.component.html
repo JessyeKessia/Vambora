@@ -1,42 +1,42 @@
-<div class="page-content">
-    <h2>Planejar viagem</h2>
-  
-    <div class="linha">
-      <div class="coluna">
-        <label for="motorista">Motorista</label>
-        <input type="text" id="motorista" placeholder="Nome" [(ngModel)]="carona.motorista">
-      </div>
-      <div class="coluna">
-        <label for="data-saida">Data de saída</label>
-        <input type="date" id="data-saida" [(ngModel)]="carona.dataSaida">
-      </div>
-      <div class="coluna">
-        <label for="endereco-partida">Endereço de partida</label>
-        <input type="text" id="endereco-partida" placeholder="Endereço" [(ngModel)]="carona.enderecoPartida">
-      </div>
+<div class="page-content" [formGroup]="caronaForm">
+  <h2>Planejar viagem</h2>
+
+  <div class="linha">
+    <div class="coluna">
+      <label for="motorista">Motorista</label>
+      <input type="text" id="motorista" placeholder="Nome" formControlName="motorista">
     </div>
-  
-    <div class="linha">
-      <div class="coluna">
-        <label for="endereco-chegada">Endereço de chegada</label>
-        <input type="text" id="endereco-chegada" placeholder="Endereço" [(ngModel)]="carona.enderecoChegada">
-      </div>
-      <div class="coluna">
-        <label for="valor">Valor</label>
-        <input type="number" id="valor" [(ngModel)]="carona.valor">
-      </div>
-      <div class="coluna">
-        <label for="vagas">Vagas</label>
-        <input type="number" id="vagas" [(ngModel)]="carona.vagas">
-      </div>
+    <div class="coluna">
+      <label for="data-saida">Data de saída</label>
+      <input type="date" id="data-saida" formControlName="dataSaida">
     </div>
-    
-    <div class="linha">
-      <div class="coluna">
-        <label for="observacoes">Observações</label>
-        <textarea id="observacoes-texto" placeholder="Escreva suas observações" [(ngModel)]="carona.textoObservacoes"></textarea>
-      </div>
+    <div class="coluna">
+      <label for="endereco-partida">Endereço de partida</label>
+      <input type="text" id="endereco-partida" placeholder="Endereço" formControlName="enderecoPartida">
     </div>
+  </div>
+
+  <div class="linha">
+    <div class="coluna">
+      <label for="endereco-chegada">Endereço de chegada</label>
+      <input type="text" id="endereco-chegada" placeholder="Endereço" formControlName="enderecoChegada">
+    </div>
+    <div class="coluna">
+      <label for="valor">Valor</label>
+      <input type="number" id="valor" formControlName="valor">
+    </div>
+    <div class="coluna">
+      <label for="vagas">Vagas</label>
+      <input type="number" id="vagas" formControlName="vagas">
+    </div>
+  </div>
   
-    <button class="botao-enviar" mat-flat-button (click)="cadastrarViagem()">Planejar</button>
+  <div class="linha">
+    <div class="coluna">
+      <label for="observacoes">Observações</label>
+      <textarea id="observacoes-texto" placeholder="Escreva suas observações" formControlName="textoObservacoes"></textarea>
+    </div>
+  </div>
+
+  <button class="botao-enviar" mat-flat-button (click)="cadastrarViagem()">Planejar</button>
 </div>

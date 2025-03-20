@@ -5,6 +5,9 @@ import { ListagemComponent } from './listagem/listagem.component';
 import { FormsModule } from '@angular/forms'; 
 import { MaterialModule } from '../material/material.module';
 import { MinhasCaronasComponent } from './minhas-caronas/minhas-caronas.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
+
 
 
 
@@ -17,7 +20,8 @@ import { MinhasCaronasComponent } from './minhas-caronas/minhas-caronas.componen
   imports: [
     CommonModule,
     FormsModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ],
   exports: [
     FormularioComponent,

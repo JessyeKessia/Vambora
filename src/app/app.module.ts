@@ -27,6 +27,7 @@ import { UsuarioService } from './shared/servicos/usuario.service';
 import { PassageiroFireService } from './shared/servicos/passageiro-fire.service';
 import { MotoristaFireService } from './shared/servicos/motorista-fire.service';
 import { MatIconModule } from '@angular/material/icon';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -55,6 +56,7 @@ import { MatIconModule } from '@angular/material/icon';
     AngularFirestoreModule,
     MatMenuModule,
     MatIconModule,
+    ReactiveFormsModule
 
   ],
   providers: [

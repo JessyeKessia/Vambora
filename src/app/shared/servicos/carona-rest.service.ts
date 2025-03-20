@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Carona } from '../modelo/carona';
+import { environment } from '../../../enviroment/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CaronaRestService {
 
-  private URL_CARONA = 'http://localhost:3000/caronas';
+  private URL_CARONA = environment.URL_CARONA;
 
   constructor(private http: HttpClient) {}
 
