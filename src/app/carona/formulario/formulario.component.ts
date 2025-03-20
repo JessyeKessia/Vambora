@@ -65,7 +65,7 @@ export class FormularioComponent implements OnInit {
     this.apiService.cadastrar(this.caronaForm.value).subscribe({
       next: () => {
         this.mensagemService.sucesso('Viagem cadastrada com sucesso!');
-        this.roteador.navigate(['/home']);
+        this.roteador.navigate(['//minhascaronas']);
       },
       error: (erro) => {
         console.error('Erro ao cadastrar viagem:', erro);

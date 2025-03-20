@@ -41,3 +41,19 @@ td {
     color: white;
     width: 60px;
 }     
+.input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+    box-shadow: 2px 2px 5px 1px #cecdcd;
+}
+
+.mat-form-field {
+    width: 100%;
+}
+
+.mat-input-element {
+    padding: 10px;
+}

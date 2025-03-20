@@ -5,43 +5,107 @@
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       <ng-container matColumnDef="motorista">
         <th mat-header-cell *matHeaderCellDef> Motorista </th>
-        <td mat-cell *matCellDef="let element"> {{element.motorista}} </td>
+        <td mat-cell *matCellDef="let element">
+          <ng-container *ngIf="element.isEditing; else displayMotorista">
+            <div class="linha">
+              <input matInput [(ngModel)]="element.motorista" class="input" />
+            </div>
+          </ng-container>
+          <ng-template #displayMotorista>
+            {{ element.motorista }}
+          </ng-template>
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="dataSaida">
         <th mat-header-cell *matHeaderCellDef> Data de Saída </th>
-        <td mat-cell *matCellDef="let element"> {{element.dataSaida}} </td>
+        <td mat-cell *matCellDef="let element">
+          <ng-container *ngIf="element.isEditing; else displayDataSaida">
+            <div class="linha">
+              <input matInput [(ngModel)]="element.dataSaida" class="input" />
+            </div>
+          </ng-container>
+          <ng-template #displayDataSaida>
+            {{ element.dataSaida }}
+          </ng-template>
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="enderecoPartida">
         <th mat-header-cell *matHeaderCellDef> Endereço de Partida </th>
-        <td mat-cell *matCellDef="let element"> {{element.enderecoPartida}} </td>
+        <td mat-cell *matCellDef="let element">
+          <ng-container *ngIf="element.isEditing; else displayEnderecoPartida">
+            <div class="linha">
+              <input matInput [(ngModel)]="element.enderecoPartida" class="input" />
+            </div>
+          </ng-container>
+          <ng-template #displayEnderecoPartida>
+            {{ element.enderecoPartida }}
+          </ng-template>
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="enderecoChegada">
         <th mat-header-cell *matHeaderCellDef> Endereço de Chegada </th>
-        <td mat-cell *matCellDef="let element"> {{element.enderecoChegada}} </td>
+        <td mat-cell *matCellDef="let element">
+          <ng-container *ngIf="element.isEditing; else displayEnderecoChegada">
+            <div class="linha">
+              <input matInput [(ngModel)]="element.enderecoChegada" class="input" />
+            </div>
+          </ng-container>
+          <ng-template #displayEnderecoChegada>
+            {{ element.enderecoChegada }}
+          </ng-template>
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="valor">
         <th mat-header-cell *matHeaderCellDef> Valor </th>
-        <td mat-cell *matCellDef="let element"> {{element.valor}} </td>
+        <td mat-cell *matCellDef="let element">
+          <ng-container *ngIf="element.isEditing; else displayValor">
+            <div class="linha">
+              <input matInput [(ngModel)]="element.valor" class="input" />
+            </div>
+          </ng-container>
+          <ng-template #displayValor>
+            {{ element.valor }}
+          </ng-template>
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="vagas">
-        <th mat-header-cell *matHeaderCellDef>
-          Vagas
-        </th>
+        <th mat-header-cell *matHeaderCellDef> Vagas </th>
         <td mat-cell *matCellDef="let element">
-          <mat-chip>
-            {{element.vagas}}
-          </mat-chip>
+          <ng-container *ngIf="element.isEditing; else displayVagas">
+            <div class="linha">
+              <input matInput [(ngModel)]="element.vagas" class="input" />
+            </div>
+          </ng-container>
+          <ng-template #displayVagas>
+            {{ element.vagas }}
+          </ng-template>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Ações </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button *ngIf="!element.isEditing" (click)="editCarona(element)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button *ngIf="element.isEditing" (click)="saveCarona(element)">
+            <mat-icon>save</mat-icon>
+          </button>
+          <button mat-icon-button (click)="deleteCarona(element)">
+            <mat-icon>delete</mat-icon>
+          </button>
         </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
+    
     <mat-paginator 
             [length]="100"
             [pageSize]="10"

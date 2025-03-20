@@ -8,6 +8,7 @@ export class Carona {
                 public vagas?: number,
                 public observacoes: boolean = false,
                 public textoObservacoes?: string,
+                public isEditing: boolean = false  
     ){}
 }
 
