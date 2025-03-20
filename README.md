@@ -1,8 +1,11 @@
 # Vambora
 
-Link para o Back (Spring Boot):
+Link para o Back:
 
 https://github.com/JessyeKessia/Vambora-Spring.git 
+
+Tecnologias usadas no back:
+Spring boot e postgresql
 
 Dupla:
 Danillo Coelho Barbosa - 20222370017
