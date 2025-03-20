@@ -12,14 +12,22 @@
 
 .container {
   display: flex;
-  width: 80%;
+  overflow-y: hidden;
   max-width: 1200px;
-  height: 80vh;
+  height: 85%;
   background-color: white;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-top-left-radius: 80px;
   border-bottom-left-radius: 80px;
-  overflow: hidden;
+}
+
+button[mat-flat-button] {
+  background-color: #57429D;
+  color: white;
+  border: 1px solid white;
+  border-radius: 6px;
+  padding: 8px 16px;
+  width: 25%;
 }
 
 /* Painel da esquerda */
@@ -55,15 +63,16 @@
 
 .car-image {
   margin-top: 100px;
-  width: 99%;
+  width: 80%;
 }
 
 /* Painel da direita */
 .right-panel {
   flex: 1.2;
-  padding: 50px;
+  padding: 40px;
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
 }
 
 /* Tabs */
@@ -98,7 +107,6 @@ mat-form-field {
   width: 100%;
   margin-top: 10px;
   font-size: 1.1rem;
-  font-weight: bold;
   border-radius: 8px;
   background-color: #57429D !important;
   color: white !important;
