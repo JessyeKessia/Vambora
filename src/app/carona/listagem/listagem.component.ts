@@ -30,7 +30,17 @@ export class ListagemComponent implements OnInit {
   ngOnInit(): void {
     this.apiService.listar().subscribe(
       (caronas) => {
-        this.dataSource = caronas;
+        this.dataSource = caronas.map(carona => {
+          return {
+            id: carona.id.toString(),
+            motorista: carona.motoristaNome,
+            dataSaida: carona.dataDeSaida,
+            enderecoPartida: carona.enderecoDePartida,
+            enderecoChegada: carona.enderecoDeChegada,
+            valor: carona.valor,
+            vagas: carona.vagas
+        }
+      }) as Carona[];
         this.clearEditingState();
       }
     );
@@ -53,18 +63,16 @@ export class ListagemComponent implements OnInit {
 
 
   saveCarona(element: Carona): void {
-    if (element && element.id) {
-      this.apiService.atualizar(element).subscribe(
-        () => {
-          element.isEditing = false;  
-          this.mensagemService.sucesso('Carona atualizada com sucesso');
-          this.roteador.navigate(['/minhascaronas']);
-        },
-        (error) => {
-          this.mensagemService.erro('Erro ao atualizar a carona');
-        }
-      );
-    }
+    this.apiService.atualizar(element).subscribe(
+      () => {
+        element.isEditing = false;  
+        this.mensagemService.sucesso('Carona atualizada com sucesso');
+        this.roteador.navigate(['/minhascaronas']);
+      },
+      (error) => {
+        this.mensagemService.erro('Erro ao atualizar a carona');
+      }
+    );
   }
 
   deleteCarona(element: Carona): void {

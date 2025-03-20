@@ -15,6 +15,7 @@ export class FormularioComponent implements OnInit {
   caronaForm!: FormGroup;
   nomeUsuario: string = '';
   tipoUsuario: string = '';
+  emailUsuario: string = '';
 
   constructor(
     private fb: FormBuilder,
@@ -48,6 +49,7 @@ export class FormularioComponent implements OnInit {
       const usuario = JSON.parse(usuarioSalvo);
       this.nomeUsuario = usuario.nome;
       this.tipoUsuario = usuario.tipo;
+      this.emailUsuario = usuario.email;
       this.usuarioService.setTipoUsuario(this.tipoUsuario);
     }
   }

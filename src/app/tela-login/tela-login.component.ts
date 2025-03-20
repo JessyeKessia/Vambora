@@ -46,7 +46,7 @@ export class TelaLoginComponent {
     this.motoristaService.logarMotorista(email, senha).subscribe({
       next: (motorista) => {
         if (motorista) {
-          localStorage.setItem('usuario', JSON.stringify({ nome: motorista.nome, tipo: 'Motorista' }));
+          localStorage.setItem('usuario', JSON.stringify({ nome: motorista.nome, tipo: 'Motorista', email }));
           this.router.navigate(['/tela-principal']);
         } else {
           this.mensagemService.erro('Usuário não encontrado');

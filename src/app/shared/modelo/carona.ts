@@ -12,5 +12,18 @@ export class Carona {
     ){}
 }
 
+export interface CaronaResponse {
+    "id": number,
+    "motoristaNome": string,
+    "motoristaEmail": string,
+    "dataDeSaida": string,
+    "enderecoDePartida": string,
+    "enderecoDeChegada": string,
+    "valor": number,
+    "vagas": number,
+    "observacoes": string,
+    "finalizada": boolean
+}
+
 export const CARONAS: Carona[] = [
 ]

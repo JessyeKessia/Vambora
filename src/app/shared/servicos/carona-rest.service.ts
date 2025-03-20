@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Carona } from '../modelo/carona';
+import { Carona, CaronaResponse } from '../modelo/carona';
 import { environment } from '../../../enviroment/environment.prod';
 
 @Injectable({
@@ -15,11 +15,28 @@ export class CaronaRestService {
 
   cadastrar(carona: Carona): Observable<Carona> {
     delete carona.id;
-    return this.http.post<Carona>(this.URL_CARONA, carona);
+    const { isEditing, motorista, dataSaida, enderecoChegada, enderecoPartida, textoObservacoes, ...data } = carona
+    const usuarioSalvo = JSON.parse(localStorage.getItem('usuario') as string)
+    const email = usuarioSalvo.email
+    
+    return this.http.post<Carona>(this.URL_CARONA, {
+      ...data,
+      motoristaNome: motorista,
+      motoristaEmail: email,
+      dataDeSaida: dataSaida,
+      enderecoDePartida: enderecoChegada,
+      enderecoDeChegada: enderecoPartida,
+      observacoes: textoObservacoes,
+      finalizada: false
+    });
   }
 
-  listar(): Observable<Carona[]> {
-    return this.http.get<Carona[]>(this.URL_CARONA);
+  listar(): Observable<CaronaResponse[]> {
+    const usuarioSalvo = JSON.parse(localStorage.getItem('usuario') as string)
+    const email = usuarioSalvo.email
+    const params = new HttpParams().set('motoristaEmail', email)
+
+    return this.http.get<CaronaResponse[]>(this.URL_CARONA, { params });
   }
 
   remover(id: string): Observable<any> {
@@ -31,6 +48,19 @@ export class CaronaRestService {
   }
 
   atualizar(carona: Carona): Observable<Carona> {
-    return this.http.put<Carona>(`${this.URL_CARONA}/${carona.id}`, carona);
+    const { isEditing, motorista, dataSaida, enderecoChegada, enderecoPartida, textoObservacoes, ...data } = carona
+    const usuarioSalvo = JSON.parse(localStorage.getItem('usuario') as string)
+    const email = usuarioSalvo.email
+    
+    return this.http.put<Carona>(`${this.URL_CARONA}/${carona.id}`, {
+      ...data,
+      motoristaNome: motorista,
+      motoristaEmail: email,
+      dataDeSaida: dataSaida,
+      enderecoDePartida: enderecoChegada,
+      enderecoDeChegada: enderecoPartida,
+      observacoes: textoObservacoes,
+      finalizada: false
+    });
   }
 }

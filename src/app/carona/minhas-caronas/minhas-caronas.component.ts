@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { UsuarioService } from '../../shared/servicos/usuario.service';
+import { CaronaRestService } from '../../shared/servicos/carona-rest.service';
 
 @Component({
   selector: 'app-minhas-caronas',
